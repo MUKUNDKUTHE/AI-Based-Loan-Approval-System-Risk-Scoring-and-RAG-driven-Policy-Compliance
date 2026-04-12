@@ -2,7 +2,7 @@ import os
 from unittest import result
 import streamlit as st
 import pandas as pd
-from PyPDF2 import PdfReader
+from PyPDF import PdfReader
 from langchain_classic.prompts import PromptTemplate
 from langchain_classic.chains import RetrievalQA
 from langchain_community.embeddings import HuggingFaceEmbeddings
