@@ -1,0 +1,12 @@
+langchain
+langchain-huggingface
+langchain_community
+PyPDF2
+faiss-cpu
+sentence-transformers
+streamlit
+langchain-groq
+scikit-learn==1.6.1
+xgboost
+lightgbm
+catboost
