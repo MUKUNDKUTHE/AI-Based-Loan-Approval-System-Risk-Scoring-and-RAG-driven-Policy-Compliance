@@ -15,8 +15,7 @@ import joblib
 def load_ml_model():
     return joblib.load("loan_pipeline.pkl")
 
-from secret_api_keys import groq_api_key
-os.environ['GROQ_API_KEY'] = groq_api_key
+os.environ['GROQ_API_KEY'] = st.secrets["GROQ_API_KEY"]
 
 BASE_DB_PATH = "vectorstore"
 
