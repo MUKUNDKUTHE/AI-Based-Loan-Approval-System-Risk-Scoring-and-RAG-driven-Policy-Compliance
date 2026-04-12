@@ -1,7 +1,7 @@
 langchain
 langchain-huggingface
 langchain_community
-PyPDF2
+pypdf2
 faiss-cpu
 sentence-transformers
 streamlit
