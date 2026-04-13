@@ -2,7 +2,7 @@ import os
 from unittest import result
 import streamlit as st
 import pandas as pd
-from PyPDF import PdfReader
+import pdfplumber
 from langchain_classic.prompts import PromptTemplate
 from langchain_classic.chains import RetrievalQA
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -65,13 +65,13 @@ def create_vectorstore_from_uploaded_pdf(uploaded_file):
     splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=50)
 
     docs = []
-    pdf_reader = PdfReader(uploaded_file)
 
-    for page in pdf_reader.pages:
-        text = page.extract_text()
-        if text:
-            chunks = splitter.split_text(text)
-            docs.extend(chunks)
+    with pdfplumber.open(uploaded_file) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            if text:
+                chunks = splitter.split_text(text)
+                docs.extend(chunks)
 
     vectorstore = FAISS.from_texts(docs, embeddings)
     return vectorstore
