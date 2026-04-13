@@ -46,7 +46,7 @@ def load_vectorstores():
         else:
                
             docs = []
-            with pdfplumber.open(uploaded_file) as pdf:
+            with pdfplumber.open(PDF_PATHS) as pdf:
                 for page in pdf.pages:
                     text = page.extract_text()
                     if text:
