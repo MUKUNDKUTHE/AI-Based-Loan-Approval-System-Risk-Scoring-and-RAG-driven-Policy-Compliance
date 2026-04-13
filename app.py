@@ -44,14 +44,14 @@ def load_vectorstores():
                 db_path, embeddings, allow_dangerous_deserialization=True
             )
         else:
-            pdf_reader = PdfReader(path)
+               
             docs = []
-
-            for page in pdf_reader.pages:
-                text = page.extract_text()
-                if text:
-                    chunks = splitter.split_text(text)
-                    docs.extend(chunks)
+            with pdfplumber.open(uploaded_file) as pdf:
+                for page in pdf.pages:
+                    text = page.extract_text()
+                    if text:
+                        chunks = splitter.split_text(text)
+                        docs.extend(chunks)
 
             vs = FAISS.from_texts(docs, embeddings)
             vs.save_local(db_path)
