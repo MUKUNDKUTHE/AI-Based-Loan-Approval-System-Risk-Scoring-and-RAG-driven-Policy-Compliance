@@ -27,6 +27,7 @@ PDF_PATHS = {
     "Kotak Mahindra Bank": "KOTAKMAHINDRABANK.pdf"
 }
 
+@st.cache_resource
 def load_vectorstores():
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vectorstores = {}
