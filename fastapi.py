@@ -25,8 +25,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-os.environ["GROQ_API_KEY"] = "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"
+import os
+groq_api_key = os.getenv("GROQ_API_KEY")
+os.environ["GROQ_API_KEY"] = groq_api_key
 
 BASE_DB_PATH = "vectorstore"
 
