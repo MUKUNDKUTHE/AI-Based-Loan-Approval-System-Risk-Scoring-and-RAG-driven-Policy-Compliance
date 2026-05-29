@@ -25,7 +25,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-import os
+
 groq_api_key = os.getenv("GROQ_API_KEY")
 os.environ["GROQ_API_KEY"] = groq_api_key
 
